@@ -1,0 +1,29 @@
+<%- include("../partials/header") %>
+ 
+<% if(currentUser && currentUser.isAdmin) { %>
+   <h3 class="ml-4">Welcome Shivu</h3>
+ <% } %>
+<div class="container">
+  <header class="jumbotron my-3">
+     <h1>Welcome To YelpCamp World</h1>
+     <p>View All Campgrounds All Over The Countries</p>
+     <p>
+       <a href="/campgrounds/new" class="btn btn-info">Add New Campgrounds</a>
+     </p>
+  </header>
+  <div class="row my-4 text-center" style="display: flex; flex-wrap: wrap;">
+      <% campgrounds.forEach(function(campground) { %>
+        <div class="col-md-3 col-sm-6">
+          <div class="card">
+              <img class="img-fluid" src="<%= campground.image %> ">
+              <h5 class="card-title"> <%= campground.name %> </h5>
+              <p><a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a></p>
+          </div>
+          
+        </div>
+     <% }); %>
+  </div>
+</div>
+
+
+<%- include("../partials/footer") %>

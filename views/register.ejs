@@ -1,0 +1,27 @@
+<%- include("./partials/header") %>
+
+
+
+
+  <div class="row">
+    <div class="col-md-12 text-center mt-5">
+      <div class="m-auto " style="width: 35%;">
+        <h2>SIGN UP FOR FREE </h2>
+        <form action="/register" method="POST" class="my-4">
+          <input class="form-control my-3" type="text" name="username" placeholder="username">
+          <input class="form-control my-3" type="password" name="password" placeholder="password">
+          <input class="form-control my-3" type="text" name="firstName" placeholder="First name">
+          <input class="form-control my-3" type="text" name="lastName" placeholder="Last name">
+          <input class="form-control my-3" type="email" name="email" placeholder="email">
+          <input class="form-control my-3" type="text" name="avatar" placeholder="avatar url">
+          <input class="form-control my-3" type="text" name="adminCode"  placeholder="Admin code (optional only if your admin)">
+          <button class="btn btn-primary btn-block mt-2 ">SIGN UP</button>
+         </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<%- include("./partials/footer") %>
