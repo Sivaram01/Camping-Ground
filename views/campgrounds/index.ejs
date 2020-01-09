@@ -10,6 +10,16 @@
      <p>
        <a href="/campgrounds/new" class="btn btn-info">Add New Campgrounds</a>
      </p>
+      <form action="/campgrounds" method="GET" class="form-inline">
+        <div class="form-group">
+          <input type="text" name="search" placeholder="Campground search..." class="form-control mr-2">
+          <span class="input-group-append">
+            <button class="btn btn-outline-info" type="submit">
+                <i class="fa fa-search py- px-2"></i>
+            </button>
+          </span>
+          </div>  
+      </form>
   </header>
   <div class="row my-4 text-center" style="display: flex; flex-wrap: wrap;">
       <% campgrounds.forEach(function(campground) { %>

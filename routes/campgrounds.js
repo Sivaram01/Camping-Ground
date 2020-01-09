@@ -6,14 +6,26 @@ var middleware = require('../middleware');
 
 //Index Route
 router.get('/', function(req, res) {
-	//Get All Campgrounds from database
-	Campground.find({}, function(err, allCampgrounds) {
-		if (err) {
-			console.log(err);
-		} else {
-			res.render('campgrounds/index', { campgrounds: allCampgrounds, page: 'campgrounds' });
-		}
-	});
+	if (req.query.search) {
+		const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+		//Get All Campgrounds from database
+		Campground.find({ name: regex }, function(err, allCampgrounds) {
+			if (err) {
+				console.log(err);
+			} else {
+				res.render('campgrounds/index', { campgrounds: allCampgrounds, page: 'campgrounds' });
+			}
+		});
+	} else {
+		//Get All Campgrounds from database
+		Campground.find({}, function(err, allCampgrounds) {
+			if (err) {
+				console.log(err);
+			} else {
+				res.render('campgrounds/index', { campgrounds: allCampgrounds, page: 'campgrounds' });
+			}
+		});
+	}
 });
 //Create Route
 router.post('/', middleware.isLoggedIn, function(req, res) {
@@ -100,5 +112,9 @@ router.delete('/:id', middleware.checkCampgroundOwnerShip, function(req, res) {
 		}
 	});
 });
+
+function escapeRegex(text) {
+	return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
 
 module.exports = router;
