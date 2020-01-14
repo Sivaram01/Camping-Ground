@@ -24,7 +24,7 @@
   <div class="row my-4 text-center" style="display: flex; flex-wrap: wrap;">
       <% campgrounds.forEach(function(campground) { %>
         <div class="col-md-3 col-sm-6">
-          <div class="card">
+          <div class="card mb-4">
               <img class="img-fluid" src="<%= campground.image %> ">
               <h5 class="card-title"> <%= campground.name %> </h5>
               <p><a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a></p>
