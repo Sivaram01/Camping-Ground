@@ -62,7 +62,7 @@ app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/comments', commentRoutes);
 
 //Local Host
-var port = process.env.port || 7000;
+var port = process.env.PORT || 7000;
 app.listen(port, function() {
-	console.log('Server has started');
+	console.log(`server running at ${port}`);
 });
