@@ -16,9 +16,14 @@ var campgroundRoutes = require('./routes/campgrounds');
 var commentRoutes = require('./routes/comments');
 var indexRoutes = require('./routes/index');
 
-mongoose.set('useUnifiedTopology', true);
-mongoose.connect('mongodb://localhost/yelp_camp_v12', { useNewUrlParser: true });
-mongoose.set('useFindAndModify', false);
+mongoose.connect(process.env.DATABASE, {
+  useNewUrlParser: true,
+  useUnifiedTopology:true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+}).then(()=>{
+  console.log("DB Connected");
+});
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
